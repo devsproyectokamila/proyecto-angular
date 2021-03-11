@@ -1,0 +1,20 @@
+<nav>
+    <div class="container">
+      <ul class="navbar-left">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <!-- <li><a href="#" data-toggle="modal" data-target="#cartModal"> Display Cart</a></li> -->
+      </ul> <!--end navbar-left -->      
+      
+      <ul class="navbar-right">
+        <li><a href="#" id="cart" (mouseover)="showCart()"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">{{productService.cart_size}}</span></a></li>
+      </ul> <!--end navbar-right -->
+    </div> <!--end container -->
+</nav>
+<div class="container" >
+  <div class="shopping-cart" style="display: none;">
+    <app-cart></app-cart>
+  </div> 
+</div> 
+
+
