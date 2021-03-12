@@ -1,16 +1,73 @@
-<ng-template #content let-modal>
-    <div class="modal-header">
+<!-- Plantilla del Modal -->
+<ng-template #content let-modal> 
+  <div class="container-fluid">
+    <!-- Encabezado del Modal -->
+    <div class="modal-header row">
+      <!-- Icono y Cantidad de Articulos en el Carrito -->
+      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{productService.cart_size}}</span>
+      <!-- Botón para cerrar el modal (Cross)-->
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">
-        <app-cart></app-cart>
+    <!-- Cuerpo del Modal -->
+    <div class="modal-body row">
+      <div class="col-12">
+        <!-- Encabezado (subtotal) -->
+        <div class="row mb-5">
+          <div class="shopping-cart-header col-12 text-right">
+            <div class="shopping-cart-total ">
+              <span class="lighter-text">Subtotal:</span>
+              <span class="font-weight-bold item-total"> {{productService.cart_total |currency:'USD'}}</span>
+            </div>
+          </div> <!--end shopping-cart-header -->
+        </div>
+        <!-- Lista de elementos dentro del carrito -->
+        <ul class="shopping-cart-items row pl-0 justify-content-center">
+          <li class="row w-100 pb-3 mb-2 border-bottom border-color-dark " *ngFor="let b of productService.cart">
+            <!-- Imagen del articulo -->
+            <div class="col-2">
+              <img src="{{b.imagen}}" class="rounded mx-auto d-block img-fluid" alt="item1" />
+            </div>
+            <!-- Nombre, Precio Unitario y Cantidad del artículo -->
+            <div class="col-8">
+              <span class="item-name d-block mb-2 ">{{b.nombre}}</span>
+              <span class="item-price d-block lighter-text ">{{(b.precio)|currency:'USD'}}</span>
+              <!-- Botones para agregar o remover del carrito -->
+              <span class="item-quantity text-center d-block mb-1">
+                <button class="btn btn-primary mr-3" (click)="productService.addOrRemoveItem(b,false)">-</button> 
+                Und:{{b.cantidad}} 
+                <button class="btn btn-primary ml-3" (click)="productService.addOrRemoveItem(b,true)"> +</button>
+              </span>
+            </div>
+            <!-- Precio total por articulos -->
+            <div class="col-2 pr-0">
+              <span class="item-price text-right font-weight-bold">{{(b.precio * b.cantidad)|currency:'USD'}}</span>
+              <!-- Botón para remover artículo del carrito -->
+              <i class="fa fa-trash trash-icon mx-2 pt-3" (click)="productService.deleteItem(b)" style="cursor: pointer;"></i>
+            </div>
+            <br>
+          </li> 
+        </ul>
+        <!-- Pie (Total) -->
+        <div class="row mt-3">
+          <div class="shopping-cart-total col-12 text-right">
+            <span class="font-weight-bold">Total:</span>
+            <span class="font-weight-bold item-total"> {{productService.cart_total |currency:'USD'}}</span>
+          </div>
+        </div>
+      </div>
     </div>
-</ng-template>
-<div class="container">
-    <div class="row justify-content-center">
-        <button class="btn btn-lg btn-primary mt-3" (click)="open(content)">Ver Carrito</button>
+    <!-- Pie del Modal -->
+    <div class="modal-footer row">
+      <div class="col">
+        <!-- Botón para Vaciar el carrito -->
+        <button class="btn btn-primary w-100" (click)="this.emptyCart()">Vaciar carrito</button>
+      </div>
     </div>
-</div>
+  </div>
+</ng-template> <!-- end Plantilla del Modal -->
+
+<!-- Botón para llamar al modal (Cuando el carrito esta vacio se deshabilita)-->
+<button [disabled]="productService.cart_size==0" class="btn btn-outline-primary w-100" (click)="open(content)">Ver Carrito</button>
 

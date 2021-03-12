@@ -1,1 +1,39 @@
+nav {
+    padding: 20px 0 40px 0;
+    background: #F8F8F8;
+    font-size: 16px;
+} 
+.navbar-left {
+    float: left;
+}
+.navbar-right {
+    float: right;
+}
+li {
+    display: inline;
+    padding-left: 20px;
+}
 
+a {
+    color: #777777;
+    text-decoration: none;
+}  
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* Posición del Carrito */
+.shopping-cart {
+    float: right;
+    background: white;
+    width: 350px;
+    position: relative;
+    border-radius: 3px;
+    border: solid 1px;
+    padding: 20px;
+    max-height: 500px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+  }  

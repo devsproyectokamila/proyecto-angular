@@ -21,39 +21,6 @@
     color: red;
   }
   
-  nav {
-    padding: 20px 0 40px 0;
-    background: #F8F8F8;
-    font-size: 16px;
-  } 
-  .navbar-left {
-      float: left;
-  }
-    
-  .navbar-right {
-    float: right;
-  }
-  
-      
-  li {
-    display: inline;
-    padding-left: 20px;
-  }
-  
-  a {
-    color: #777777;
-    text-decoration: none;
-  }  
-  
-  a:hover {
-    color: black;
-  }
- 
-  .container {
-    margin: auto;
-    width: 80%;
-  }
-  
   .badge {
       background-color: #6394F8;
       border-radius: 10px;
@@ -66,91 +33,44 @@
       vertical-align: middle;
       white-space: nowrap;
   }
+/* Aplicación de animación a bote de basura */
+  .trash-icon:hover{
+    animation-duration: 0.5s;
+    animation-name: shake;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+/* Animación de agitar */
+  @keyframes shake {
+    from {
+      transform: rotate(-20deg);
+      -webkit-transform: rotate(-20deg);
+      -moz-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+      -o-transform: rotate(-20deg);
+    }
   
-  .shopping-cart {
-    margin: 20px 0;
-    float: right;
-    background: white;
-    width: 350px;
-    position: relative;
-    border-radius: 3px;
-    border: solid 1px;
-    padding: 20px;
-    
-  }  
-    
-  .shopping-cart-header {
-    border-bottom: 1px solid #E8E8E8;
-    padding-bottom: 15px;
+    to {
+      transform: rotate(20deg);
+      -webkit-transform: rotate(20deg);
+      -moz-transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+      -o-transform: rotate(20deg);
+    }
   }
-  
-  .shopping-cart-total {
-    float: right;
-  }
-    
-  .shopping-cart-items {
-    padding-top: 20px;
-  }
-  
-  img {
-    float: left;
-    margin-right: 12px;
-  }
-      
-  .item-name {
-    display: block;
-    padding-top: 10px;
-    font-size: 16px;
-  }
-      
-  .item-price {
-    color:steelblue;
-    margin-left: 135px;
-  }
-      
-  .item-quantity {
-        color: black;
-  }
-  
-  .shopping-cart:after {
-      bottom: 100%;
-      left: 89%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-bottom-color: white;
-      border-width: 8px;
-      margin-left: -8px;
-  }
-  
-  .cart-icon {
-    color: #515783;
-    font-size: 24px;
-    margin-right: 7px;
-    float: left;
-  }
-  
-  .button {
-    background: steelblue;
-    color:white;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    display: block;
-    border-radius: 3px;
-    font-size: 16px;
-    margin: 25px 0 15px 0;
-  }
-  
-  .button:hover {
-      background: lighten(red, 3%);
-  }
-  
-  .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+
+  .cart-button{
+    transition: transform 1s;
+    -webkit-transition: transform 1s;
+    -moz-transition: transform 1s;
+    -ms-transition: transform 1s;
+    -o-transition: transform 1s;
+}
+/* Efecto para el botón de agregar o quitar del carrito */
+  .cart-button:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}

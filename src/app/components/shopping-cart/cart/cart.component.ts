@@ -16,7 +16,8 @@ export class CartComponent implements OnInit {
     public productService:ProductService
   ) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    // Actualiza total al crearse el carrito
     this.productService.getTotal();
   }
 }
